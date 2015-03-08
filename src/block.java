@@ -6,6 +6,7 @@ public class block {
 	private int begin;
 	private int end;
 	private int size;
+	private boolean empty=true;
 	
 	public block (int begin, int end){
 		this.setBegin(begin);
@@ -13,6 +14,12 @@ public class block {
 		setSize(end-begin+1);
 	}
 	
+	public block (int begin, int end,boolean empty){
+		this.setBegin(begin);
+		this.setEnd(end);
+		setSize(end-begin+1);
+		this.empty=empty;
+	}
 
 	public int getBegin() {
 		return begin;
@@ -88,6 +95,16 @@ public class block {
 
 	public void setSize(int size) {
 		this.size = size;
+	}
+
+
+	public boolean isEmpty() {
+		return empty;
+	}
+
+
+	public void setEmpty(boolean empty) {
+		this.empty = empty;
 	}
 
 
