@@ -16,7 +16,8 @@ public class FirstFit {
 	private ArrayList<process> inMemory= new ArrayList<process>();
 	private Queue<process> processes=new LinkedList<process>();
 	private 	ActionListener actionListener;
-	public FirstFit(){	
+	
+        public FirstFit(){	
 		setSwapCount(0);
 		for(int i=0;i<1000;i++){	
 			processes.add(new process(" "+i));
@@ -28,9 +29,7 @@ public class FirstFit {
 	
 		actionListener = new ActionListener() {
 		      public void actionPerformed(ActionEvent actionEvent) {
-		        System.out.println();
-		       
-		
+		       		
 		        for(process p:inMemory){  
 		        	p.decrementTime();  	
 		        	if(p.getTime()==0){
@@ -38,11 +37,13 @@ public class FirstFit {
 			        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
 			        	}
 		        		EmptyBlocks= block.getEmptyBlocks(mem);
+                                        System.out.print("SWAPPED:          ");
 		        		printing();
 		        	}
 		        }
 		        
 		        fill();
+                        System.out.print("PROCESSED ENDED:  ");
 		        printing();
 		      }
 		    };
@@ -106,7 +107,4 @@ public class FirstFit {
 	public void setSwapCount(int swapCount) {
 		this.swapCount = swapCount;
 	}
-	
-
-	
 }

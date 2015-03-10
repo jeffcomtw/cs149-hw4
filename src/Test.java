@@ -37,16 +37,28 @@ public class Test {
 //	}
 //	FFcount=FFcount/5;
 //	System.out.println("Avg Swapped in for FirstFit:" + FFcount);
+            
+        System.out.println("------------------------ FIRST FIT ALGORITHM --------------------------");
+	int FFcount=0;	
+	for(int i=0;i<5;i++){	
+                        System.out.println("\nALGORITHM RUN #" + (i+1));
+			FirstFit FF=new FirstFit();	
+			FFcount=FFcount+FF.start(); 
+	}
+	FFcount=FFcount/5;
+	System.out.println("Avg Swapped in for FirstFit:" + FFcount);
+	System.out.println("------------------------ END First FIT ALGORITHM --------------------------");
 	
-
+        System.out.println("\n------------------------ NEXT FIT ALGORITHM --------------------------");
 	int NFcount=0;	
 	for(int i=0;i<5;i++){	
+                        System.out.println("\nALGORITHM RUN #" + (i+1));
 			NextFit NF=new NextFit();	
 			NFcount=NFcount+NF.start(); 
 	}
 	NFcount=NFcount/5;
 	System.out.println("Avg Swapped in for NextFit:" + NFcount);
-	
+	System.out.println("------------------------ END NEXT FIT ALGORITHM --------------------------");
 	
 	}
 }

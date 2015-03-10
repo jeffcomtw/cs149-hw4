@@ -18,6 +18,7 @@ public class NextFit {
 	private Queue<process> processes=new LinkedList<process>();
 	private int leftoff=0;
 	private int previousEmptySize=0;
+        private int cycle = 1;
 	
 	public NextFit(){	
 		setSwapCount(0);
@@ -31,9 +32,7 @@ public class NextFit {
 	
 	ActionListener actionListener = new ActionListener() {
 		      public void actionPerformed(ActionEvent actionEvent) {
-		        System.out.println();
-		       
-		
+
 		        for(process p:inMemory){  
 		        	p.decrementTime();  	
 		        	if(p.getTime()==0){
@@ -41,9 +40,8 @@ public class NextFit {
 			        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
 			        	}
 		        		EmptyBlocks= block.getEmptyBlocks(mem);
-
-		        		printing();
-		        		
+                                        System.out.print("SWAPPED:          ");
+                                        printing();
 		        		if(previousEmptySize<EmptyBlocks.length){
 		        			leftoff++;
 		        		}
@@ -52,14 +50,15 @@ public class NextFit {
 		        		if(leftoff==EmptyBlocks.length){
 					    	leftoff=0;
 					    }
-	        		
+                                        
 		        		
 		        	}
 		        } 
 		        
       
 		        fill();
-		        printing();
+                        System.out.print("PROCESS ENDED:    ");
+		       printing();
    
 		      }
 		    };
@@ -106,7 +105,7 @@ public class NextFit {
 	
 	
 	public void printing(){
-		
+		      // System.out.print("Cycle # " +  cycle + ": ");
 			for(int i=0;i<mem.length;i++){
         		if(mem[i]==null){
         			System.out.print(".");
@@ -115,6 +114,7 @@ public class NextFit {
         		}
         	}	
 		
+                       // cycle++;
 			System.out.println();
 	}
 
