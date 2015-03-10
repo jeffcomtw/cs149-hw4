@@ -30,13 +30,23 @@ public class Test {
 //			System.out.println(n);
 //		}
 		
-		
-		
-	FirstFit y=new FirstFit();
-		  y.start();  
-		
-//	NextFit x=new NextFit();
-//	x.start();
+//	int  FFcount=0;	
+//	for(int i=0;i<5;i++){	
+//		  FirstFit FF=new FirstFit();
+//		  FFcount=FFcount+FF.start(); 
+//	}
+//	FFcount=FFcount/5;
+//	System.out.println("Avg Swapped in for FirstFit:" + FFcount);
+	
+
+	int NFcount=0;	
+	for(int i=0;i<5;i++){	
+			NextFit NF=new NextFit();	
+			NFcount=NFcount+NF.start(); 
+	}
+	NFcount=NFcount/5;
+	System.out.println("Avg Swapped in for NextFit:" + NFcount);
+	
 	
 	}
 }

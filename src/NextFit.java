@@ -10,17 +10,18 @@ import java.util.Queue;
 import javax.swing.Timer;
 
 public class NextFit {
-
+	private int swapCount;
 	private Timer timer;
-	private process[] mem=new process[1000];
+	private process[] mem=new process[100];
 	private block[] EmptyBlocks;
 	private ArrayList<process> inMemory= new ArrayList<process>();
 	private Queue<process> processes=new LinkedList<process>();
 	private int leftoff=0;
 	private int previousEmptySize=0;
 	
-	public NextFit(){		
-		for(int i=0;i<100;i++){	
+	public NextFit(){	
+		setSwapCount(0);
+		for(int i=0;i<1000;i++){	
 			processes.add(new process(" "+i));
 		}	
 		
@@ -66,21 +67,25 @@ public class NextFit {
 		    timer = new Timer(1000, actionListener);
 	}
 	
-	public void start(){
+	public int start(){
 		timer.start();
 		
 		long start = System.currentTimeMillis();
 		long end = start + 60*1000;
 		while (System.currentTimeMillis() < end){}
+		timer.stop();
+		return getSwapCount();
 	}
 	
 	
 	
 	public void fill(){
 		boolean accepted=false;
-		process p=processes.remove();
+		process p=null;
+		p=processes.remove();
 	    for(int c=leftoff;c<EmptyBlocks.length;c++){	
 			if(EmptyBlocks[c].getSize()>=p.getSize()){
+				swapCount++;
 				leftoff=c;
 				for(int i=EmptyBlocks[c].getBegin();i<EmptyBlocks[c].getBegin()+p.getSize();i++){
 					mem[i]=p;
@@ -111,5 +116,13 @@ public class NextFit {
         	}	
 		
 			System.out.println();
+	}
+
+	public int getSwapCount() {
+		return swapCount;
+	}
+
+	public void setSwapCount(int swapCount) {
+		this.swapCount = swapCount;
 	}
 }

@@ -9,15 +9,16 @@ import javax.swing.Timer;
 
 
 public class FirstFit {
-	
+	private int swapCount;
 	private Timer timer;
-	private process[] mem=new process[1000];
+	private process[] mem=new process[100];
 	private block[] EmptyBlocks;
 	private ArrayList<process> inMemory= new ArrayList<process>();
 	private Queue<process> processes=new LinkedList<process>();
-	
-	public FirstFit(){		
-		for(int i=0;i<100;i++){	
+	private 	ActionListener actionListener;
+	public FirstFit(){	
+		setSwapCount(0);
+		for(int i=0;i<1000;i++){	
 			processes.add(new process(" "+i));
 		}	
 		
@@ -25,7 +26,7 @@ public class FirstFit {
 	
 	    
 	
-	ActionListener actionListener = new ActionListener() {
+		actionListener = new ActionListener() {
 		      public void actionPerformed(ActionEvent actionEvent) {
 		        System.out.println();
 		       
@@ -47,24 +48,29 @@ public class FirstFit {
 		    };
 		
 		    timer = new Timer(1000, actionListener);
+		    
 	}
 	
-	public void start(){
+	public int start(){
 		timer.start();
 		
 		long start = System.currentTimeMillis();
 		long end = start + 60*1000;
 		while (System.currentTimeMillis() < end){}
+		timer.stop();
+		return getSwapCount();
 	}
 	
 	
 	
 	public void fill(){
 		boolean accepted=false;
-		process p=processes.remove();
+		process p=null;
+		p=processes.remove();
 		for(block b:EmptyBlocks){
 			
 			if(b.getSize()>=p.getSize()){
+				swapCount++;
 				for(int i=b.getBegin();i<b.getBegin()+p.getSize();i++){
 					mem[i]=p;
 				}
@@ -74,6 +80,7 @@ public class FirstFit {
 				break;
 			}		
 		}
+		
 	if(!accepted)
 		processes.add(p);	
 	}
@@ -90,6 +97,14 @@ public class FirstFit {
         	}	
 		
 			System.out.println();
+	}
+
+	public int getSwapCount() {
+		return swapCount;
+	}
+
+	public void setSwapCount(int swapCount) {
+		this.swapCount = swapCount;
 	}
 	
 
