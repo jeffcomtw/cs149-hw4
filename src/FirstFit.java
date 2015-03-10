@@ -29,23 +29,29 @@ public class FirstFit {
 	
 		actionListener = new ActionListener() {
 		      public void actionPerformed(ActionEvent actionEvent) {
-		       		
+		       	
+		    	 /* TRIGGER EVERY SECOND!!!!!!!!!!!!!!!!
+		    	  * for every process P in memory, decrement its duration. 
+		    	  * If duration reach 0, then replace P inside "process[] mem" with null.(Basically the process is done and memory space is freed)
+		    	  * After that "EmptyBlocks= block.getEmptyBlocks(mem)" is called to recalculate array of empty block ( since removing process form memory destroy/create new empty block)
+		    	  * THEN PRINT the  process[] mem :D 
+		    	  * After the main forloop, fill() is called (it take a process in "Queue<process> processes" and try to fill it in memory ( process[] mem)
+		    	  */
+		    	  
 		        for(process p:inMemory){  
 		        	p.decrementTime();  	
 		        	if(p.getTime()==0){
-		        		for(int i = 0; i < mem.length; i++){
-			        		if(mem[i] != null && mem[i].equals(p))
-                                                {   mem[i] = null; }
+		        		for(int i=0;i<mem.length;i++){
+			        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
 			        	}
 		        		EmptyBlocks= block.getEmptyBlocks(mem);
-                                        System.out.print("SWAPPED:          ");
+                                        System.out.print("ENDED:          ");
 		        		printing();
 		        	}
 		        }
 		        
 		        fill();
-                        System.out.print("PROCESSED ENDED:  ");
-		        printing();
+  
 		      }
 		    };
 		
@@ -66,23 +72,34 @@ public class FirstFit {
 	
 	
 	public void fill(){
+		
 		boolean accepted=false;
+		//remove a process from "Queue<process> processes"
 		process p=null;
 		p=processes.remove();
+		
+		
+		//compare the size of the process of each empty block in EmptyBlocks
 		for(block b:EmptyBlocks){
-			
+			//if can fit....put it in (for loop below do the job)
 			if(b.getSize()>=p.getSize()){
 				swapCount++;
-				for(int i = b.getBegin(); i < b.getBegin()+ p.getSize(); i++){
+				for(int i=b.getBegin();i<b.getBegin()+p.getSize();i++){
 					mem[i]=p;
 				}
+				//inMemory hold a process currently in process[] mem
 				inMemory.add(p);
+				//again fill a memory with process may create/destroy a empty block. This line must be called
 				EmptyBlocks= block.getEmptyBlocks(mem);
+			    System.out.print("PROCESSED SWAPPED:  ");
+			    printing();
+			    
 				accepted=true;
 				break;
 			}		
 		}
-		
+	
+	//if process is too big to fit. add it back to the end of queue
 	if(!accepted)
 		processes.add(p);	
 	}
