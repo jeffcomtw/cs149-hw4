@@ -5,8 +5,10 @@ import java.util.ListIterator;
 import javax.swing.Timer;
 
 
-public class Test {
-	public static void main(String args[]){
+public class Test 
+{
+	public static void main(String args[])
+        {
             
         System.out.println("------------------------ FIRST FIT ALGORITHM --------------------------");
 	int FFcount=0;	
@@ -54,5 +56,6 @@ public class Test {
 	WFcount=WFcount/5;
 	System.out.println("Avg Swapped in for WorstFit: " + WFcount);
 	System.out.println("------------------------ END WORST FIT ALGORITHM --------------------------");
-	}
+    }
 }
+
