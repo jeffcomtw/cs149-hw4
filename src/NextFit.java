@@ -18,7 +18,6 @@ public class NextFit {
 	private Queue<process> processes=new LinkedList<process>();
 	private int leftoff=0;
 	private int previousEmptySize=0;
-        private int cycle = 1;
 	
 	public NextFit(){	
 		setSwapCount(0);
@@ -37,7 +36,8 @@ public class NextFit {
 		        	p.decrementTime();  	
 		        	if(p.getTime()==0){
 		        		for(int i=0;i<mem.length;i++){
-			        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
+			        		if(mem[i] != null && mem[i].equals(p))
+                                                {   mem[i]=null; }
 			        	}
 		        		EmptyBlocks= block.getEmptyBlocks(mem);
                                         System.out.print("SWAPPED:          ");
@@ -105,7 +105,6 @@ public class NextFit {
 	
 	
 	public void printing(){
-		      // System.out.print("Cycle # " +  cycle + ": ");
 			for(int i=0;i<mem.length;i++){
         		if(mem[i]==null){
         			System.out.print(".");
@@ -114,7 +113,6 @@ public class NextFit {
         		}
         	}	
 		
-                       // cycle++;
 			System.out.println();
 	}
 

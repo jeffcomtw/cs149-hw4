@@ -33,8 +33,9 @@ public class FirstFit {
 		        for(process p:inMemory){  
 		        	p.decrementTime();  	
 		        	if(p.getTime()==0){
-		        		for(int i=0;i<mem.length;i++){
-			        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
+		        		for(int i = 0; i < mem.length; i++){
+			        		if(mem[i] != null && mem[i].equals(p))
+                                                {   mem[i] = null; }
 			        	}
 		        		EmptyBlocks= block.getEmptyBlocks(mem);
                                         System.out.print("SWAPPED:          ");
@@ -72,7 +73,7 @@ public class FirstFit {
 			
 			if(b.getSize()>=p.getSize()){
 				swapCount++;
-				for(int i=b.getBegin();i<b.getBegin()+p.getSize();i++){
+				for(int i = b.getBegin(); i < b.getBegin()+ p.getSize(); i++){
 					mem[i]=p;
 				}
 				inMemory.add(p);
