@@ -46,7 +46,7 @@ public class Test {
 			FFcount=FFcount+FF.start(); 
 	}
 	FFcount=FFcount/5;
-	System.out.println("Avg Swapped in for FirstFit:" + FFcount);
+	System.out.println("Avg Swapped in for FirstFit: " + FFcount);
 	System.out.println("------------------------ END First FIT ALGORITHM --------------------------");
 	
         System.out.println("\n------------------------ NEXT FIT ALGORITHM --------------------------");
@@ -57,7 +57,7 @@ public class Test {
 			NFcount=NFcount+NF.start(); 
 	}
 	NFcount=NFcount/5;
-	System.out.println("Avg Swapped in for NextFit:" + NFcount);
+	System.out.println("Avg Swapped in for NextFit: " + NFcount);
 	System.out.println("------------------------ END NEXT FIT ALGORITHM --------------------------");
 	
 	}
