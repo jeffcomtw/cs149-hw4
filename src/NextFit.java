@@ -72,25 +72,33 @@ public class NextFit {
 	        		for(int i=0;i<mem.length;i++){
 		        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
 		        	}
+	        		if(EmptyBlocks.length!=0){
+	        			previousEmptySize=EmptyBlocks.length;
+	        			preStart=EmptyBlocks[leftoff].getBegin();
 	        		
-	        		previousEmptySize=EmptyBlocks.length;
-	        		preStart=EmptyBlocks[leftoff].getBegin();
+	        			EmptyBlocks= block.getEmptyBlocks(mem);
+	        			System.out.print("ENDED:          ");
+	        			printing();
 	        		
-	        		EmptyBlocks= block.getEmptyBlocks(mem);
-	        		System.out.print("ENDED:          ");
-                    printing();
+                    	if(previousEmptySize<EmptyBlocks.length ){
+                    		if(preStart!=EmptyBlocks[leftoff].getBegin())
+                    			leftoff++;
+	        			}else if(previousEmptySize>EmptyBlocks.length){
+	        				if(leftoff==EmptyBlocks.length)
+	        					leftoff--;
+	        				if(preStart!=EmptyBlocks[leftoff].getBegin()&&EmptyBlocks.length>1)
+	        					leftoff--;
+				    		}
 	        		
-                    if(previousEmptySize<EmptyBlocks.length ){
-                    	if(preStart!=EmptyBlocks[leftoff].getBegin())
-                    		leftoff++;
-	        		}else if(previousEmptySize>EmptyBlocks.length){
-	        			if(leftoff==EmptyBlocks.length)
-	        				leftoff--;
-	        			if(preStart!=EmptyBlocks[leftoff].getBegin()&&EmptyBlocks.length>1)
-	        				leftoff--;
-				    }
-	        		
-                    previousEmptySize=EmptyBlocks.length;                 		
+                    	previousEmptySize=EmptyBlocks.length;
+	        		}else{
+	        			
+	        			EmptyBlocks= block.getEmptyBlocks(mem);
+	        			System.out.print("ENDED:          ");
+	        			printing();
+	        			previousEmptySize=EmptyBlocks.length;
+	        			leftoff=0;
+	        		}
 	        	}
 	        } 
 
