@@ -11,8 +11,8 @@ public class process {
 		int[] b={5, 11, 17, 31};
 		Random r = new Random();
 		
-		time=r.nextInt(4) + 1;
-		size=b[r.nextInt(3)];
+		time=r.nextInt(5)+1;
+		size=b[r.nextInt(4)];
 		this.name=name;
 	}
 	
