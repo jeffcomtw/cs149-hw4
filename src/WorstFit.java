@@ -55,7 +55,7 @@ public class WorstFit {
 		        		}
 		        		previousEmptySize=EmptyBlocks.length;
                                          //sort
-                                        Arrays.sort(EmptyBlocks, new BlockCompare());
+                                        Arrays.sort(EmptyBlocks, new BlockCompare2());
 		        		
 		        		if(leftoff==EmptyBlocks.length){
 					    	leftoff=0;
@@ -103,7 +103,7 @@ public class WorstFit {
 				EmptyBlocks= block.getEmptyBlocks(mem);
                                 
                                  //sort
-                                 Arrays.sort(EmptyBlocks, new BlockCompare());
+                                 Arrays.sort(EmptyBlocks, new BlockCompare2());
 				
 
 				accepted=true;
