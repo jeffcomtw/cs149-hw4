@@ -61,13 +61,32 @@ public class WorstFit {
 		    
 	}
 	
+    public void fillup(){
+    	 for(process p:inMemory){  
+	        	p.decrementTime();  	
+	        	if(p.getTime()==0){
+	        		for(int i=0;i<mem.length;i++){
+		        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
+		        	}
+	        		EmptyBlocks= block.getEmptyBlocks(mem);
+	        		Arrays.sort(EmptyBlocks, new BlockCompare2());
+                                 System.out.print("ENDED:          ");
+	        		printing();
+	        	}
+	        }
+	        
+	        fill();
+    }
+    
 	public int start(){
-		timer.start();
-		
-		long start = System.currentTimeMillis();
-		long end = start + 60*1000;
-		while (System.currentTimeMillis() < end){}
-		timer.stop();
+//		timer.start();
+//		long start = System.currentTimeMillis();
+//		long end = start + 60*1000;
+//		while (System.currentTimeMillis() < end){}
+//		timer.stop();
+		for(int i=0;i<60;i++){
+			fillup();
+		}
 		return getSwapCount();
 	}
 	

@@ -65,13 +65,40 @@ public class NextFit {
 		    timer = new Timer(1000, actionListener);
 	}
 	
+	public void fillup(){
+		 for(process p:inMemory){  
+	        	p.decrementTime();  	
+	        	if(p.getTime()==0){
+	        		for(int i=0;i<mem.length;i++){
+		        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
+		        	}
+	        		EmptyBlocks= block.getEmptyBlocks(mem);
+                                 System.out.print("ENDED:          ");
+                                 printing();
+	        		if(previousEmptySize<EmptyBlocks.length){
+	        			leftoff++;
+	        		}
+	        		previousEmptySize=EmptyBlocks.length;
+	        		
+	        		if(leftoff==EmptyBlocks.length){
+				    	leftoff=0;
+				    }
+                                        		
+	        	}
+	        } 
+
+	        fill();
+	}
+	
 	public int start(){
-		timer.start();
-		
-		long start = System.currentTimeMillis();
-		long end = start + 60*1000;
-		while (System.currentTimeMillis() < end){}
-		timer.stop();
+//		timer.start();	
+//		long start = System.currentTimeMillis();
+//		long end = start + 60*1000;
+//		while (System.currentTimeMillis() < end){}
+//		timer.stop();
+		for(int i=0;i<60;i++){
+			fillup();
+		}
 		return getSwapCount();
 	}
 	
