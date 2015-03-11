@@ -48,7 +48,7 @@ public class WorstFit {
 			        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
 			        	}
 		        		EmptyBlocks= block.getEmptyBlocks(mem);
-                                        System.out.print("SWAPPED:          ");
+                                        System.out.print("ENDED:          ");
                                         printing();
 		        		if(previousEmptySize<EmptyBlocks.length){
 		        			leftoff++;
@@ -64,12 +64,9 @@ public class WorstFit {
 		        		
 		        	}
 		        } 
-		        
-      
+
 		        fill();
-                        System.out.print("PROCESS ENDED:    ");
-		       printing();
-   
+
 		      }
 		    };
 		
@@ -101,7 +98,8 @@ public class WorstFit {
 				}
 				inMemory.add(p);
 				EmptyBlocks= block.getEmptyBlocks(mem);
-                                
+                System.out.print("PROCESS SWAPPED:    ");
+		        printing();                 
                                  //sort
                                  Arrays.sort(EmptyBlocks, new BlockCompare2());
 				
