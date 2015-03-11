@@ -18,7 +18,7 @@ public class NextFit {
 	private Queue<process> processes=new LinkedList<process>();
 	private int leftoff=0;
 	private int previousEmptySize=0;
-        private int cycle = 1;
+	private int preStart=0;
 	
 	public NextFit(){	
 		setSwapCount(0);
@@ -72,18 +72,25 @@ public class NextFit {
 	        		for(int i=0;i<mem.length;i++){
 		        		if(mem[i]!=null&&mem[i].equals(p)){mem[i]=null;};
 		        	}
-	        		EmptyBlocks= block.getEmptyBlocks(mem);
-                                 System.out.print("ENDED:          ");
-                                 printing();
-	        		if(previousEmptySize<EmptyBlocks.length){
-	        			leftoff++;
-	        		}
-	        		previousEmptySize=EmptyBlocks.length;
 	        		
-	        		if(leftoff==EmptyBlocks.length){
-				    	leftoff=0;
+	        		previousEmptySize=EmptyBlocks.length;
+	        		preStart=EmptyBlocks[leftoff].getBegin();
+	        		
+	        		EmptyBlocks= block.getEmptyBlocks(mem);
+	        		System.out.print("ENDED:          ");
+                    printing();
+	        		
+                    if(previousEmptySize<EmptyBlocks.length ){
+                    	if(preStart!=EmptyBlocks[leftoff].getBegin())
+                    		leftoff++;
+	        		}else if(previousEmptySize>EmptyBlocks.length){
+	        			if(leftoff==EmptyBlocks.length)
+	        				leftoff--;
+	        			if(preStart!=EmptyBlocks[leftoff].getBegin()&&EmptyBlocks.length>1)
+	        				leftoff--;
 				    }
-                                        		
+	        		
+                    previousEmptySize=EmptyBlocks.length;                 		
 	        	}
 	        } 
 
@@ -116,6 +123,9 @@ public class NextFit {
 	    		if(EmptyBlocks[c].getSize()>=p.getSize()){
 	    			swapCount++;
 					leftoff=c;
+					if(EmptyBlocks[c].getSize()==p.getSize()){
+						leftoff=0;
+					}
 					for(int i=EmptyBlocks[c].getBegin();i<EmptyBlocks[c].getBegin()+p.getSize();i++){
 						mem[i]=p;
 					}
