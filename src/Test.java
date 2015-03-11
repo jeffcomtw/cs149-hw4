@@ -10,7 +10,7 @@ public class Test
 	public static void main(String args[])
         {
             
-        System.out.println("------------------------ FIRST FIT ALGORITHM --------------------------");
+        /*System.out.println("------------------------ FIRST FIT ALGORITHM --------------------------");
 	int FFcount=0;	
 	for(int i=0;i<5;i++){	
                         System.out.println("\nALGORITHM RUN #" + (i+1));
@@ -31,7 +31,7 @@ public class Test
 	}
 	NFcount=NFcount/5;
 	System.out.println("Avg Swapped in for NextFit: " + NFcount);
-	System.out.println("------------------------ END NEXT FIT ALGORITHM --------------------------");
+	System.out.println("------------------------ END NEXT FIT ALGORITHM --------------------------");*/
             
             
         System.out.println("\n------------------------ BEST FIT ALGORITHM --------------------------");
@@ -46,7 +46,7 @@ public class Test
 	System.out.println("------------------------ END BEST FIT ALGORITHM --------------------------");
         
             
-        System.out.println("\n------------------------ WORST FIT ALGORITHM --------------------------");
+        /*System.out.println("\n------------------------ WORST FIT ALGORITHM --------------------------");
 	int WFcount=0;	
 	for(int i=0;i<5;i++){	
                         System.out.println("\nALGORITHM RUN #" + (i+1));
@@ -55,7 +55,7 @@ public class Test
 	}
 	WFcount=WFcount/5;
 	System.out.println("Avg Swapped in for WorstFit: " + WFcount);
-	System.out.println("------------------------ END WORST FIT ALGORITHM --------------------------");
+	System.out.println("------------------------ END WORST FIT ALGORITHM --------------------------");*/
     }
 }
 

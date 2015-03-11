@@ -2,6 +2,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.swing.Timer;
@@ -53,6 +54,9 @@ public class BestFit {
 		        			leftoff++;
 		        		}
 		        		previousEmptySize=EmptyBlocks.length;
+                                        
+                                        //sort
+                                        Arrays.sort(EmptyBlocks, new BlockCompare());
 		        		
 		        		if(leftoff==EmptyBlocks.length){
 					    	leftoff=0;
@@ -98,7 +102,9 @@ public class BestFit {
 				}
 				inMemory.add(p);
 				EmptyBlocks= block.getEmptyBlocks(mem);
-				
+                                
+                                //sort
+				Arrays.sort(EmptyBlocks, new BlockCompare());
 
 				accepted=true;
 				break;
